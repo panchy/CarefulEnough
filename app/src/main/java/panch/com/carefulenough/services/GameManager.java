@@ -12,6 +12,8 @@ import java.util.Random;
 
 import panch.com.carefulenough.pages.Challenges.DontTouchPage.DontTouchPageFragment;
 import panch.com.carefulenough.pages.Challenges.TouchOnPage.TouchPageFragment;
+import panch.com.carefulenough.pages.Challenges.TouchTheColoredShape.TouchTheColoredShapeFragment;
+import panch.com.carefulenough.pages.Challenges.TouchWhenYouHearTheSound.TouchWhenYouHearTheSoundFragment;
 
 public class GameManager {
 
@@ -58,15 +60,23 @@ public class GameManager {
 
     public static List<Fragment> fragments = new ArrayList<>();
 
+    public static boolean PLAYED_HEAR_THE_SOUND_ONCE=false;
     public static void init() {
         fragments.clear();
-        fragments.add(DontTouchPageFragment.newInstance());
         fragments.add(TouchPageFragment.newInstance());
+        fragments.add(DontTouchPageFragment.newInstance());
+        fragments.add(TouchTheColoredShapeFragment.newInstance());
+        if(!PLAYED_HEAR_THE_SOUND_ONCE)
+        {
+            fragments.add(TouchWhenYouHearTheSoundFragment.newInstance());
+        }
+        else {
+            PLAYED_HEAR_THE_SOUND_ONCE=false;
+        }
 
     }
 
     private static Random randomGenerator;
-
     public static Fragment getRandomGameFragment() {
         init();
         randomGenerator = new Random();

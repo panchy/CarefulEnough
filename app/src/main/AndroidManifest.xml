@@ -24,11 +24,15 @@
         </activity>
         <activity
             android:name=".pages.Challenges.InGameActivity"
-            android:launchMode="singleTop"></activity>
+            android:launchMode="singleTop" />
+
+        <activity
+            android:theme="@style/AppThemeGameOver"
+            android:name=".pages.GameOver.GameOverActivity"
+            android:launchMode="singleTop" />
 
         <service android:name=".services.BackgroundMusic" />
 
-        <activity android:name=".pages.GameOver.GameOverActivity"></activity>
     </application>
 
 </manifest>

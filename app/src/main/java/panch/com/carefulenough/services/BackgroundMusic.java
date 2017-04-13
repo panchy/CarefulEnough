@@ -20,10 +20,10 @@ public class BackgroundMusic extends Service {
         // TODO: Return the communication channel to the service.
         throw new UnsupportedOperationException("Not yet implemented");
     }
-
+    private static boolean bgMusicPlaying=false;
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if (mp == null) {
+        if (mp == null && !bgMusicPlaying) {
 
             mp = MediaPlayer.create(this, R.raw.sneaky);
             mp.setLooping(true);
@@ -33,6 +33,7 @@ public class BackgroundMusic extends Service {
                 public void onPrepared(MediaPlayer mediaPlayer) {
                     if (!mp.isPlaying()) {
                         mp.start();
+                        bgMusicPlaying=true;
                     }
                 }
             });
@@ -44,10 +45,11 @@ public class BackgroundMusic extends Service {
 
     @Override
     public void onDestroy() {
-        if (mp != null) {
+        if (mp != null && bgMusicPlaying) {
             mp.stop();
             mp.release();
             mp = null;
+            bgMusicPlaying=false;
         }
         super.onDestroy();
     }

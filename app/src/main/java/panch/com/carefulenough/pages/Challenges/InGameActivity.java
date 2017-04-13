@@ -5,6 +5,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 
 import com.devspark.robototextview.widget.RobotoTextView;
 
@@ -13,6 +14,7 @@ import butterknife.ButterKnife;
 import panch.com.carefulenough.R;
 import panch.com.carefulenough.listeners.PageListener;
 import panch.com.carefulenough.pages.Base.BaseActivity;
+import panch.com.carefulenough.pages.Challenges.TouchWhenYouHearTheSound.TouchWhenYouHearTheSoundFragment;
 import panch.com.carefulenough.pages.GameOver.GameOverActivity;
 import panch.com.carefulenough.services.BackgroundMusic;
 import panch.com.carefulenough.services.GameManager;
@@ -38,8 +40,9 @@ public class InGameActivity extends BaseActivity implements PageListener {
     @Override
     public void onPageSucceeded() {
         GameManager.incrementScore();
-        mScore.setText("Score: "+String.valueOf(GameManager.getScore()));
+        mScore.setText("Score: " + String.valueOf(GameManager.getScore()));
         FragmentUtils.fragmentToAdd = GameManager.getRandomGameFragment();
+
         new FragmentUtils(this).setFragment(R.id.container, true);
     }
 
@@ -58,6 +61,13 @@ public class InGameActivity extends BaseActivity implements PageListener {
         if (mHandler == null)
             mHandler = new Handler();
 
+        if (TimeForThisPage <= -2) {
+            mTimer.setVisibility(View.GONE);
+            stopService(new Intent(this, BackgroundMusic.class));
+            return;
+        }
+        startService(new Intent(this, BackgroundMusic.class));
+        mTimer.setVisibility(View.VISIBLE);
         TimeLeft = TimeForThisPage;
         mTimer.setText(String.valueOf(TimeLeft));
         mHandler.postDelayed(reduceTime, 1000);
@@ -83,7 +93,6 @@ public class InGameActivity extends BaseActivity implements PageListener {
     };
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +100,6 @@ public class InGameActivity extends BaseActivity implements PageListener {
         ButterKnife.bind(this);
         tickTockMp = MediaPlayer.create(this, R.raw.ticktock);
         tickTockMp.setAudioStreamType(AudioManager.STREAM_MUSIC);
-        startService(new Intent(this, BackgroundMusic.class));
         FragmentUtils.fragmentToAdd = GameManager.getRandomGameFragment();
         new FragmentUtils(this).setFragment(R.id.container, false);
     }

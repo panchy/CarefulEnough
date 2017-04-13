@@ -7,16 +7,85 @@
     android:background="@color/colorPrimaryDark">
 
 
-    <com.devspark.robototextview.widget.RobotoTextView
-        android:id="@+id/todo"
+    <LinearLayout
+        android:id="@+id/sub_layout_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:text="DO\nTOUCH \nTHE \nSCREEN"
-        android:textColor="@android:color/white"
-        android:textSize="46sp"
-        app:typeface="roboto_condensed_bold" />
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="DO\nTOUCH \nTHE \nSCREEN"
+            android:textColor="@android:color/white"
+            android:textSize="46sp"
+            app:typeface="roboto_condensed_bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sub_layout_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="DON'T\nTOUCH \nTHE \nSCREEN"
+            android:textColor="@android:color/white"
+            android:textSize="46sp"
+            app:typeface="roboto_condensed_bold" />
+
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="AND YOU LOSE"
+            android:textColor="@color/light_gray"
+            android:textSize="16sp"
+            app:typeface="roboto_mono_thin" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sub_layout_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="DO"
+            android:textColor="@color/light_gray"
+            android:textSize="16sp"
+            app:typeface="roboto_mono_thin" />
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="TOUCH \nTHE \nSCREEN"
+            android:textColor="@android:color/white"
+            android:textSize="46sp"
+            app:typeface="roboto_condensed_bold" />
+
+
+    </LinearLayout>
 
 
 </FrameLayout>
