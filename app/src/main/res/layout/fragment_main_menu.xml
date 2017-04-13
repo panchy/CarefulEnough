@@ -1,0 +1,45 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context="panch.com.carefulenough.pages.MainMenu.Fragment.MainMenuFragment">
+
+
+    <com.devspark.robototextview.widget.RobotoTextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="42dp"
+        android:gravity="center_horizontal"
+        android:text="Careful\nEnough\n?"
+        android:textColor="@color/colorAccent"
+        android:textSize="64sp"
+        app:typeface="roboto_condensed_bold" />
+
+
+    <mehdi.sakout.fancybuttons.FancyButton
+        android:id="@+id/btn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="64dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:textSize="56sp"
+        android:textStyle="bold"
+        fancy:fb_borderColor="#ffffff"
+        fancy:fb_borderWidth="4dp"
+        fancy:fb_defaultColor="#00000000"
+        fancy:fb_focusColor="#ff0004"
+        fancy:fb_iconPosition="left"
+        fancy:fb_radius="20dp"
+        fancy:fb_text="LET'S SEE"
+        fancy:fb_textColor="#ffffff" />
+
+
+</FrameLayout>

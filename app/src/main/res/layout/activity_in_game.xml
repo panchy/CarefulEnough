@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.devspark.robototextview.widget.RobotoTextView
+        android:id="@+id/timer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="5!"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="46sp"
+        app:typeface="roboto_condensed_bold" />
+
+    <com.devspark.robototextview.widget.RobotoTextView
+        android:id="@+id/score"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:gravity="end"
+        android:padding="8dp"
+        android:text="Score: 0"
+        android:textColor="@android:color/white"
+        android:textSize="32sp"
+        app:typeface="roboto_condensed_bold" />
+
+
+</FrameLayout>
