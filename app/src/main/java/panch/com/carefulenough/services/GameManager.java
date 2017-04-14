@@ -32,6 +32,7 @@ public class GameManager {
     public static void reset() {
         MinusTime = 0;
         Score = 0;
+        PLAYED_HEAR_THE_SOUND_ONCE=true;
     }
 
     public static int getMinusTime() {
@@ -48,19 +49,21 @@ public class GameManager {
     }
 
     public static void incrementMinusTime() {
-        if (Score == 3)
+        if (Score == 5)
             MinusTime += 1;
-        else if (Score == 6)
+        else if (Score == 10)
             MinusTime += 1;
-        else if (Score == 8)
+        else if (Score == 15)
             MinusTime += 1;
-        else if (Score == 11)
+        else if (Score == 20)
             MinusTime += 1;
+
+
     }
 
     public static List<Fragment> fragments = new ArrayList<>();
 
-    public static boolean PLAYED_HEAR_THE_SOUND_ONCE=false;
+    public static boolean PLAYED_HEAR_THE_SOUND_ONCE=true;
     public static void init() {
         fragments.clear();
         fragments.add(TouchPageFragment.newInstance());

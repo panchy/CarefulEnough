@@ -72,13 +72,19 @@ public class TouchWhenYouHearTheSoundFragment extends Fragment {
         mSubLayout1.setVisibility(View.VISIBLE);
         SelectedResource = 0;
         mediaResources.clear();
+        if (GameManager.getScore() >= 10) {
+            mediaResources.add(R.raw.e);
+            mediaResources.add(R.raw.f);
+
+        } else if (GameManager.getScore() >= 20) {
+            mediaResources.add(R.raw.e);
+            mediaResources.add(R.raw.f);
+            mediaResources.add(R.raw.d);
+            mediaResources.add(R.raw.g);
+        }
         mediaResources.add(R.raw.a);
         mediaResources.add(R.raw.b);
         mediaResources.add(R.raw.c);
-        mediaResources.add(R.raw.d);
-        mediaResources.add(R.raw.e);
-        mediaResources.add(R.raw.f);
-        mediaResources.add(R.raw.g);
         mediaResources.add(R.raw.c_thin);
 
         mp = new MediaPlayer();
@@ -94,25 +100,30 @@ public class TouchWhenYouHearTheSoundFragment extends Fragment {
             public void run() {
                 SelectedResource = getRandomRaw();
                 for (i = 100; i < 200; i++) {
-                    if (i == 199) {
+                    if (i == 180) {
                         playRaw(SelectedResource);
                     }
                     handler.post(new Runnable() {
                         public void run() {
-                            mLayout.setBackgroundColor(Color.argb(255, 0, i, 120));
+                            try {
+                                mLayout.setBackgroundColor(Color.argb(255, 0, i, 120));
+                            } catch (NullPointerException d) {
+
+                            }
+
                         }
                     });
                     // next will pause the thread for some time
                     try {
-                        Thread.sleep(25);
+                        Thread.sleep(50);
                     } catch (InterruptedException ie) {
                         break;
                     }
                 }
+                initCondition();
             }
         }).start();
 
-        initCondition();
 
     }
 
@@ -123,6 +134,7 @@ public class TouchWhenYouHearTheSoundFragment extends Fragment {
         public void run() {
             if (!LOSE_ON_TOUCH) {
                 mListener.onPageFailed();
+                return;
             }
             mSubLayout1.setVisibility(View.GONE);
             mSubLayout2.setVisibility(View.VISIBLE);
@@ -137,7 +149,7 @@ public class TouchWhenYouHearTheSoundFragment extends Fragment {
                 randomVoiceHandler = new Handler();
             }
 
-            randomVoiceHandler.postDelayed(randomVoiceRunnable, 1900);
+            randomVoiceHandler.postDelayed(randomVoiceRunnable, 2500);
         }
     };
 
@@ -157,7 +169,7 @@ public class TouchWhenYouHearTheSoundFragment extends Fragment {
                 return true;
             }
         });
-        randomVoiceHandler.postDelayed(randomVoiceRunnable, 2500);
+        randomVoiceHandler.postDelayed(randomVoiceRunnable, 1000);
 
     }
 
@@ -174,7 +186,7 @@ public class TouchWhenYouHearTheSoundFragment extends Fragment {
         super.onAttach(context);
         mListener = (InGameActivity) context;
         GameManager.setLoseWhenTimeFinishes(false);
-        GameManager.PLAYED_HEAR_THE_SOUND_ONCE=true;
+        GameManager.PLAYED_HEAR_THE_SOUND_ONCE = true;
         mListener.onPageChanged(TIME - GameManager.getMinusTime());
     }
 

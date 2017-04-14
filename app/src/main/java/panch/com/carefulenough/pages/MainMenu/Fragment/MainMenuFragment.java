@@ -19,6 +19,7 @@ import butterknife.ButterKnife;
 import mehdi.sakout.fancybuttons.FancyButton;
 import panch.com.carefulenough.R;
 import panch.com.carefulenough.pages.Challenges.InGameActivity;
+import panch.com.carefulenough.services.GameManager;
 
 
 public class MainMenuFragment extends Fragment {
@@ -78,11 +79,10 @@ public class MainMenuFragment extends Fragment {
 
     @Override
     public void onStop() {
-        if(mediaPlayer!=null)
-        {
+        if (mediaPlayer != null) {
             mediaPlayer.stop();
             mediaPlayer.release();
-            mediaPlayer=null;
+            mediaPlayer = null;
         }
         super.onStop();
     }
